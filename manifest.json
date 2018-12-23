@@ -4,8 +4,8 @@
   "description": "My (first) PWA App",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#aeea00",
-  "theme_color": "#aeea00",
+  "background_color": "#1e88e5",
+  "theme_color": "#1e88e5",
   "gcm_sender_id": "670319867086",
   "icons": [
     {
