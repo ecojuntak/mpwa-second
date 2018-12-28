@@ -82,7 +82,7 @@ function getCompetitions() {
     return JSON.parse(data)
   }
 
-  return fetch('http://api.football-data.org/v2/competitions?areas=2014', {
+  return fetch('https://api.football-data.org/v2/competitions?areas=2014', {
     method: 'get',
     headers: {
       'X-Auth-Token': 'b2bd13c3d314406790c5999e110dac42'
