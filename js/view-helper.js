@@ -127,6 +127,35 @@ async function buildMatchCard(content, match) {
   return match
 }
 
+async function buildCompetitionListView(content, data) {
+  content.innerHTML = ` 
+    <h5> ${data.count} Competition in Regional Asia </h5>
+      <div class="row">`
+
+  await data.competitions.forEach(competition => {
+    buildCompetititonList(content, competition)
+  })
+
+  content.innerHTML += "</div>"
+
+  return content;
+}
+
+function buildCompetititonList(content, competition) {
+  content.innerHTML += `
+    <div class="col s12 m7">
+      <div class="card #039be5 light-blue darken-1">
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4> ${competition.name} </h4>
+            <h6> Subarea ${competition.area.name} </h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+}
+
 function buildNotFoundView(content) {
   content.innerHTML = `
     <h4> Opsss! Sorry, I couldn't find the page :( </h4>
@@ -160,6 +189,9 @@ async function loadPage(page = null) {
           let id = await page.split("=")[1]
           const data = await getTeamDetail(id);
           buildTeamDetailView(content, data)
+        } else if (page === 'competition') {
+          const data = await getCompetitions();
+          buildCompetitionListView(content, data)
         } else {
           buildNotFoundView(content)
         }
